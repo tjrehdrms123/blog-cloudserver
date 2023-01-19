@@ -10,10 +10,11 @@ services:
     volumes:
       - ./blog-cloudserver/client.conf:/etc/nginx/conf.d/client.conf
       - ./blog-cloudserver/server.conf:/etc/nginx/conf.d/server.conf
-      - ./blog-client/app/build:/usr/share/nginx/html
-      - './blog-server/app:/app'
-      - '/app/node_modules'
+      - ./blog-client/:/usr/share/nginx/html
+      - './blog-server/dist:/dist'
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
+    command:
+      - node dist/main.js
     tty: true
