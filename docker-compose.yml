@@ -1,4 +1,4 @@
-version: '1.0'
+version: '3.3'
 
 services:
   blog:
@@ -11,10 +11,8 @@ services:
       - ./blog-cloudserver/client.conf:/etc/nginx/conf.d/client.conf
       - ./blog-cloudserver/server.conf:/etc/nginx/conf.d/server.conf
       - ./blog-client/:/usr/share/nginx/html
-      - './blog-server/dist:/dist'
+      - ./blog-server/app/:/blog-server
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
-    command:
-      - node dist/main.js
     tty: true
