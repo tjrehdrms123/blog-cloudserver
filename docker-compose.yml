@@ -1,0 +1,19 @@
+version: '1.0'
+
+services:
+  blog:
+    image: nginx:latest
+    container_name: blog
+    restart: "on-failure"
+    ports:
+      - "80:80"
+    volumes:
+      - ./blog-cloudserver/client.conf:/etc/nginx/conf.d/client.conf
+      - ./blog-cloudserver/server.conf:/etc/nginx/conf.d/server.conf
+      - ./blog-client/app/build:/usr/share/nginx/html
+      - './blog-server/app:/app'
+      - '/app/node_modules'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
