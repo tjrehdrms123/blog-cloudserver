@@ -33,3 +33,8 @@ npm install
 npm install pm2 -g
 pm2 start /blog-server/main.js --watch
 ```
+
+### 배포 방법
+1. 배포할 client, server의 .env파일의 MODE값이 production인지 확인
+2. production일 경우 build
+3. client일 경우 package.json을 찹고해 deploy스크립트까지 
